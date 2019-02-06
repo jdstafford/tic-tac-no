@@ -14,7 +14,12 @@ const GameBoard = ({ grid, players }) => {
         // build game board columns
         for (let colIndex = 0; colIndex < grid.size; colIndex++) {
             coordinates.rowIndex = colIndex;
-            squares.push(<GameBoardSquare key={colIndex} onClick={onSquareClick} coordinates={coordinates} owner={null} />);
+            squares.push(<GameBoardSquare
+                key={colIndex}
+                onClick={onSquareClick}
+                coordinates={coordinates}
+                owner={null}
+            />);
         }
 
         rows.push(<GameBoardRow key={rowIndex} squares={squares} />);

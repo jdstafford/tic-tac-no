@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 const GameBoardSquare = ({ onClick, coordinates, owner }) => (
     <div className="GameBoardSquare">
         onClick={onClick(coordinates)}
-        style={{ borderColor: owner.color }}
+        style={{
+            borderColor: owner ? owner.color : 'black'
+        }}
     </div>
 );
 
