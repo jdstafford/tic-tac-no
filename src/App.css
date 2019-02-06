@@ -6,7 +6,27 @@
   color: #61dafb;
 }
 
-.GameBoardSquare {
-  width: 200px;
-  height: 200px;
+.Header {
+  color: #636363;
 }
+
+.GameBoard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.GameBoardRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.GameBoardSquare {
+  width: 100px;
+  height: 100px;
+  background: rgb(237, 0, 0, .5);
+  border-radius: 10px;
+  margin: 5px;
+}
+
