@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import GameBoardRow from './GameBoardRow';
 import GameBoardSquare from './GameBoardSquare';
 
-const GameBoard = (grid, players) => {
+const GameBoard = ({ grid, players }) => {
     const rows = [];
 
     // build game board rows
@@ -14,10 +14,10 @@ const GameBoard = (grid, players) => {
         // build game board columns
         for (let colIndex = 0; colIndex < grid.size; colIndex++) {
             coordinates.rowIndex = colIndex;
-            squares.push(<GameBoardSquare onClick={onSquareClick} coordinates={coordinates} owner={null} />);
+            squares.push(<GameBoardSquare key={colIndex} onClick={onSquareClick} coordinates={coordinates} owner={null} />);
         }
 
-        rows.push(<GameBoardRow squares={squares} />);
+        rows.push(<GameBoardRow key={rowIndex} squares={squares} />);
     }
 
     return (

@@ -3,18 +3,14 @@ import { toggleTurn } from '../actions';
 
 import GameBoard from './GameBoard';
 
-const getPlayers = (players) => {
-    return players;
-};
-
 const mapStateToProps = state => ({
-    players: getPlayers(state.players),
-    grid: () => state.grid
+    players: state.players,
+    grid: state.gameBoard.grid
 });
 
 const mapDispatchToProps = dispatch => ({
     toggleTurn: () => dispatch(toggleTurn())
-})
+});
 
 export default connect(
     mapStateToProps,
