@@ -1,10 +1,12 @@
 const defaultState = [
     {
         color: 'red',
+        character: 'N',
         ownedSquares: []
     },
     {
         color: 'blue',
+        character: 'O',
         ownedSquares: []
     }
 ];
