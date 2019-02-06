@@ -1,9 +1,22 @@
-import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { toggleTurn } from '../actions';
 
-class GameBoardContainer extends Component {
-  render() {
-    return <div className="GameBoardContainer" />;
-  }
-}
+import GameBoard from './GameBoard';
 
-export default GameBoardContainer;
+const getPlayers = (players) => {
+    return players;
+};
+
+const mapStateToProps = state => ({
+    players: getPlayers(state.players),
+    grid: () => state.grid
+});
+
+const mapDispatchToProps = dispatch => ({
+    toggleTurn: () => dispatch(toggleTurn())
+})
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(GameBoard);
