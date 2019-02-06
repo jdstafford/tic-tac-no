@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import GameBoardRow from './GameBoardRow';
 import GameBoardSquare from './GameBoardSquare';
 
-const GameBoard = ({ gridSize, players, claimSquare }) => {
+const GameBoard = ({ gridSize, claimSquare }) => {
+
     const rows = [];
-    // build game board rows
+
     for (let rowIndex = 0; rowIndex < gridSize; rowIndex++) {
         const squares = [];
         // build game board columns
@@ -32,7 +33,7 @@ const GameBoard = ({ gridSize, players, claimSquare }) => {
 
 GameBoard.propTypes = {
     gridSize: PropTypes.number.isRequired,
-    players: PropTypes.array.isRequired
+    claimSquare: PropTypes.func.isRequired
 };
 
 export default GameBoard;

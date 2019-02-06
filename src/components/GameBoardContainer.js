@@ -4,7 +4,6 @@ import { toggleTurn, claimSquare } from '../actions';
 import GameBoard from './GameBoard';
 
 const mapStateToProps = state => ({
-    players: state.players,
     gridSize: state.gameBoard.gridSize
 });
 
