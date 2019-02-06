@@ -10,6 +10,10 @@
   color: #636363;
 }
 
+.Header h2 {
+  margin: 10px 0px;
+}
+
 .GameBoard {
   display: flex;
   flex-direction: column;

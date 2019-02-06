@@ -1,14 +1,7 @@
 const defaultState = {
     currentPlayer: 0,
     winner: null,
-    grid: {
-        rows: [
-            [{}, {}, {}],
-            [{}, {}, {}],
-            [{}, {}, {}]
-        ],
-        size: 3
-    }
+    gridSize: 3
 };
 
 const gameBoard = (state = defaultState, action) => {

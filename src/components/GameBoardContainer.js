@@ -1,15 +1,16 @@
 import { connect } from 'react-redux';
-import { toggleTurn } from '../actions';
+import { toggleTurn, claimSquare } from '../actions';
 
 import GameBoard from './GameBoard';
 
 const mapStateToProps = state => ({
     players: state.players,
-    grid: state.gameBoard.grid
+    gridSize: state.gameBoard.gridSize
 });
 
 const mapDispatchToProps = dispatch => ({
-    toggleTurn: () => dispatch(toggleTurn())
+    toggleTurn: () => dispatch(toggleTurn()),
+    claimSquare: (coordinates) => dispatch(claimSquare(coordinates))
 });
 
 export default connect(
