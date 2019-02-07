@@ -1,17 +1,21 @@
-export const toggleTurn = () => ({
-    type: 'TOGGLE_TURN'
-});
-
-export const buildSquares = (size) => ({
-    type: 'BUILD_SQUARES',
+export const claimSquare = (coordinates, currentPlayer) => ({
+    type: 'CLAIM_SQUARE',
     payload: {
-        size
+        coordinates,
+        currentPlayer
     }
 });
 
-export const claimSquare = (coordinates) => ({
-    type: 'CLAIM_SQUARE',
+export const declareVictory = (winner) => ({
+    type: 'DECLARE_VICTORY',
     payload: {
-        coordinates
+        winner
+    }
+});
+
+export const toggleTurn = (currentPlayer) => ({
+    type: 'TOGGLE_TURN',
+    payload: {
+        currentPlayer
     }
 });

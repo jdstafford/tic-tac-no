@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const GameBoardSquare = ({ claimSquare, coordinates }) => (
+const GameBoardSquare = ({ claimSquare, currentPlayer, owner }) => (
     <div className="GameBoardSquare"
         onClick={claimSquare}
-    ></div>
+    >{(owner ? owner.character : currentPlayer.character)}</div>
 );
 
 GameBoardSquare.propTypes = {
     claimSquare: PropTypes.func.isRequired,
-    coordinates: PropTypes.object.isRequired,
+    currentPlayer: PropTypes.object.isRequired,
+    owner: PropTypes.object
 };
 
 export default GameBoardSquare;

@@ -1,5 +1,4 @@
 const defaultState = {
-    currentPlayer: 0,
     winner: null,
     gridSize: 3
 };
@@ -7,13 +6,11 @@ const defaultState = {
 const gameBoard = (state = defaultState, action) => {
     const actions = {
         NEW_GAME: () => {
-
+            return Object.assign(defaultState);
         },
-        END_GAME: () => {
-
-        },
-        TOGGLE_TURN: () => {
-
+        END_GAME: (action) => {
+            state.winner = action.winner;
+            return Object.assign({}, state);
         }
     };
 

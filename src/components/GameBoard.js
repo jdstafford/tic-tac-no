@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import GameBoardRow from './GameBoardRow';
 import GameBoardSquare from './GameBoardSquare';
 
-const GameBoard = ({ gridSize, claimSquare }) => {
+const GameBoard = ({ gridSize, claimSquare, currentPlayerIndex, currentPlayerDetails }) => {
 
     const rows = [];
 
@@ -15,8 +15,8 @@ const GameBoard = ({ gridSize, claimSquare }) => {
             coordinates[rowIndex] = colIndex;
             squares.push(<GameBoardSquare
                 key={colIndex}
-                claimSquare={() => claimSquare(coordinates)}
-                coordinates={coordinates}
+                currentPlayer={currentPlayerDetails}
+                claimSquare={() => claimSquare(coordinates, currentPlayerIndex)}
                 owner={null}
             />);
         }
@@ -33,7 +33,9 @@ const GameBoard = ({ gridSize, claimSquare }) => {
 
 GameBoard.propTypes = {
     gridSize: PropTypes.number.isRequired,
-    claimSquare: PropTypes.func.isRequired
+    claimSquare: PropTypes.func.isRequired,
+    currentPlayerIndex: PropTypes.number.isRequired,
+    currentPlayerDetails: PropTypes.object.isRequired
 };
 
 export default GameBoard;
