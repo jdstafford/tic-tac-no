@@ -29,11 +29,19 @@
 .GameBoardSquare {
   width: 100px;
   height: 100px;
-  background: rgb(237, 0, 0, .5);
+  line-height: 100px;
+  color: transparent;
+  font-size: 48px;
+  font-weight: bold;
+  background-color: rgb(237, 0, 0, .5);
   border-radius: 10px;
   margin: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .GameBoardSquare:hover {
-  background: rgb(237, 0, 0, 1);
+  background-color: rgb(237, 0, 0);
+  color: #f1d6d6;
 }
