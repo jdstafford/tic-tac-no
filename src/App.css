@@ -34,3 +34,6 @@
   margin: 5px;
 }
 
+.GameBoardSquare:hover {
+  background: rgb(237, 0, 0, 1);
+}
