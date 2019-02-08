@@ -36,7 +36,7 @@ const checkDiagonal = (ownedSquares, gridSize) => {
 
     do {
         // search from top left to bottom right
-        const forward = ownedSquares.find(square => square.rowIndex === rowIndex && square.colIndex === colIndex);
+        const forward = ownedSquares.find(square => square.rowIndex === rowIndex && square.colIndex === rowIndex);
         // search from bottom left to top right
         const reverse = ownedSquares.find(square => square.rowIndex === colIndex && square.colIndex === rowIndex);
 
@@ -45,8 +45,6 @@ const checkDiagonal = (ownedSquares, gridSize) => {
 
         winner = ((forwardHits.length === gridSize) || (reverseHits.length === gridSize));
 
-        console.log('forwardHits', forwardHits);
-        console.log('reverseHits', reverseHits);
         rowIndex++;
         colIndex--;
     } while (!winner && rowIndex < gridSize);

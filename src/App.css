@@ -39,9 +39,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  user-select: none;
 }
 
 .GameBoardSquare:hover {
   background-color: rgb(237, 0, 0);
   color: #f1d6d6;
+}
+
+.GameBoardSquare__owned {
+  pointer-events: none;
+  background-color: rgb(237, 0, 0);
+  color: #f1d6d6;
+}
+
+.NoHover:hover {
+  background-color: rgb(237, 0, 0, .5);
+  color: transparent;
 }

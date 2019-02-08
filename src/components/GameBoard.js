@@ -19,6 +19,7 @@ const GameBoard = ({ grid, claimSquare, playerIndex, playerDetails, winner }) =>
                 currentPlayer={playerDetails}
                 claimSquare={() => { claimSquare(coordinates, playerIndex, playerDetails, grid.length) }}
                 owner={column.owner}
+                winner={winner}
             />);
         });
 
