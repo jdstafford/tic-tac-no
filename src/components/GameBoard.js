@@ -17,7 +17,7 @@ const GameBoard = ({
 }) => {
     const rows = [];
     const playAgain = (winner || draw) ? <PlayAgainButton resetAll={() => { resetAll() }} /> : '';
-    const winnerMessage = ((winner && !draw) ? (' Wins!') : '\'s Turn');
+    const winnerMessage = ((winner && !draw) ? ' Wins!' : '\'s Turn');
     const playerMessage = playerDetails.character + winnerMessage;
     const drawMessage = 'Draw!';
 
