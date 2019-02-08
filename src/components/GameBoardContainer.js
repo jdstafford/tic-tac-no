@@ -7,12 +7,12 @@ const mapStateToProps = state => ({
     gridSize: state.gameBoard.gridSize,
     currentPlayerIndex: state.players.currentPlayer,
     currentPlayerDetails: state.players.collection[state.players.currentPlayer],
-    winner: state.gameBoard.winner
+    winner: state.players.winner
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    claimSquare: (coordinates, currentPlayerIndex) => {
-        dispatch(claimSquare(coordinates, currentPlayerIndex));
+    claimSquare: (coordinates, currentPlayerIndex, gridSize) => {
+        dispatch(claimSquare(coordinates, currentPlayerIndex, gridSize));
         dispatch(toggleTurn(currentPlayerIndex));
     }
 });

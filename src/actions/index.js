@@ -1,8 +1,9 @@
-export const claimSquare = (coordinates, currentPlayer) => ({
+export const claimSquare = (coordinates, currentPlayer, gridSize) => ({
     type: 'CLAIM_SQUARE',
     payload: {
         coordinates,
-        currentPlayer
+        currentPlayer,
+        gridSize
     }
 });
 

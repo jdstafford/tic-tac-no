@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const GameBoardSquare = ({ claimSquare, currentPlayer, owner }) => (
-    <div className="GameBoardSquare"
+    <div className={'GameBoardSquare'}
         onClick={claimSquare}
     >{(owner ? owner.character : currentPlayer.character)}</div>
 );
