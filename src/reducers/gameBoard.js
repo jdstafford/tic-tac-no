@@ -1,5 +1,4 @@
 const defaultState = {
-    winner: null,
     gridSize: 3
 };
 
