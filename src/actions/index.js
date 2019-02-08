@@ -21,3 +21,7 @@ export const updateGrid = (coordinates, player) => ({
         player
     }
 });
+
+export const resetAll = () => ({
+    type: 'RESET_ALL'
+});

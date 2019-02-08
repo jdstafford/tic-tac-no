@@ -10,7 +10,11 @@ const defaultState = {
         }
     ],
     currentPlayer: 0,
-    winner: false
+    winner: false,
+    scoreBoard: {
+        X: 0,
+        O: 0
+    }
 };
 
 const checkHorizontal = (ownedSquares, gridSize) => {
@@ -72,6 +76,7 @@ const players = (state = defaultState, action) => {
             const currentPlayer = action.payload.currentPlayer;
             const gridSize = action.payload.gridSize;
             const ownedSquares = state.collection[currentPlayer].ownedSquares;
+            let tally = state.scoreBoard[state.collection[currentPlayer].character];
 
             state.collection[currentPlayer].ownedSquares.push(
                 action.payload.coordinates
@@ -83,6 +88,10 @@ const players = (state = defaultState, action) => {
                 checkVertical(ownedSquares, gridSize)
             );
 
+            if (state.winner) {
+                state.scoreBoard[state.collection[currentPlayer].character] = tally + 1;
+            }
+
             return Object.assign({}, state);
         },
         TOGGLE_TURN: (action) => {
@@ -92,7 +101,13 @@ const players = (state = defaultState, action) => {
             return Object.assign({}, state);
         },
         RESET_ALL: () => {
-            return Object.assign({}, defaultState);
+            state.winner = false;
+            state.currentPlayer = state.currentPlayer ? 0 : 1;
+            state.collection = state.collection.map(player => {
+                player.ownedSquares = [];
+                return player;
+            })
+            return Object.assign({}, state);
         }
     };
 

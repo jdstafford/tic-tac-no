@@ -5,11 +5,8 @@ const defaultState = {
 
 const gameBoard = (state = defaultState, action) => {
     const actions = {
-        NEW_GAME: () => {
-            return Object.assign(defaultState);
-        },
-        END_GAME: (action) => {
-            state.winner = action.winner;
+        RESET_ALL: () => {
+            state.grid = generateGrid(state.gridSize);
             return Object.assign({}, state);
         },
         UPDATE_GRID: (action) => {

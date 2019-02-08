@@ -2,9 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import GameBoardRow from './GameBoardRow';
 import GameBoardSquare from './GameBoardSquare';
+import PlayAgainButton from './PlayAgainButton';
+import ScoreBoard from './ScoreBoard';
 
-const GameBoard = ({ grid, claimSquare, playerIndex, playerDetails, winner }) => {
+const GameBoard = ({ grid, scoreBoard, claimSquare, resetAll, playerIndex, playerDetails, winner }) => {
     const rows = [];
+    const playAgain = winner ? <PlayAgainButton resetAll={() => { resetAll() }} /> : '';
 
     // construct the grid from state
     grid.forEach((row, rowIndex) => {
@@ -28,8 +31,12 @@ const GameBoard = ({ grid, claimSquare, playerIndex, playerDetails, winner }) =>
 
     return (
         <div className="GameBoard">
-            {playerDetails.character}{(winner ? ' Wins!' : '\'s Turn')}
+            <div className="InfoBar">
+                {playerDetails.character}{(winner ? (' Wins!') : '\'s Turn')}
+                {playAgain}
+            </div>
             {rows}
+            <ScoreBoard scoreBoard={scoreBoard} />
         </div>
     );
 };
@@ -37,6 +44,7 @@ const GameBoard = ({ grid, claimSquare, playerIndex, playerDetails, winner }) =>
 GameBoard.propTypes = {
     grid: PropTypes.array.isRequired,
     claimSquare: PropTypes.func.isRequired,
+    resetAll: PropTypes.func.isRequired,
     playerIndex: PropTypes.number.isRequired,
     playerDetails: PropTypes.object.isRequired,
     winner: PropTypes.bool.isRequired
