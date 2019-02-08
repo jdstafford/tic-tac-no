@@ -7,16 +7,17 @@ export const claimSquare = (coordinates, currentPlayer, gridSize) => ({
     }
 });
 
-export const declareVictory = (winner) => ({
-    type: 'DECLARE_VICTORY',
-    payload: {
-        winner
-    }
-});
-
 export const toggleTurn = (currentPlayer) => ({
     type: 'TOGGLE_TURN',
     payload: {
         currentPlayer
+    }
+});
+
+export const updateGrid = (coordinates, player) => ({
+    type: 'UPDATE_GRID',
+    payload: {
+        coordinates,
+        player
     }
 });

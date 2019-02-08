@@ -13,20 +13,24 @@ const defaultState = {
     winner: false
 };
 
-const checkHorizontal = (ownedSquares, gridSize, state) => {
+const checkHorizontal = (ownedSquares, gridSize) => {
+    let winner = false;
     let rowIndex = 0;
 
     do {
         const rowColumns = ownedSquares.filter(square => square.rowIndex === rowIndex);
 
-        state.winner = (rowColumns.length === gridSize);
+        winner = (rowColumns.length === gridSize);
         rowIndex++;
-    } while (!state.winner && rowIndex < gridSize);
+    } while (!winner && rowIndex < gridSize);
+
+    return winner;
 };
 
-const checkDiagonal = (ownedSquares, gridSize, state) => {
+const checkDiagonal = (ownedSquares, gridSize) => {
     const forwardHits = [];
     const reverseHits = [];
+    let winner = false;
     let rowIndex = 0;
     let colIndex = (gridSize - 1);
 
@@ -35,23 +39,33 @@ const checkDiagonal = (ownedSquares, gridSize, state) => {
         const forward = ownedSquares.find(square => square.rowIndex === rowIndex && square.colIndex === colIndex);
         // search from bottom left to top right
         const reverse = ownedSquares.find(square => square.rowIndex === colIndex && square.colIndex === rowIndex);
+
         if (forward) forwardHits.push(forward);
         if (reverse) reverseHits.push(reverse);
-        state.winner = ((forwardHits.length === gridSize) || (reverseHits.length === gridSize));
+
+        winner = ((forwardHits.length === gridSize) || (reverseHits.length === gridSize));
+
+        console.log('forwardHits', forwardHits);
+        console.log('reverseHits', reverseHits);
         rowIndex++;
         colIndex--;
-    } while (!state.winner && rowIndex < gridSize);
+    } while (!winner && rowIndex < gridSize);
+
+    return winner;
 };
 
-const checkVertical = (ownedSquares, gridSize, state) => {
+const checkVertical = (ownedSquares, gridSize) => {
+    let winner = false;
     let colIndex = 0;
 
     do {
         const columnRows = ownedSquares.filter(square => square.colIndex === colIndex);
 
-        state.winner = (columnRows.length === gridSize);
+        winner = (columnRows.length === gridSize);
         colIndex++;
-    } while (!state.winner && colIndex < gridSize);
+    } while (!winner && colIndex < gridSize);
+
+    return winner;
 };
 
 const players = (state = defaultState, action) => {
@@ -65,14 +79,18 @@ const players = (state = defaultState, action) => {
                 action.payload.coordinates
             );
 
-            checkHorizontal(ownedSquares, gridSize, state);
-            checkDiagonal(ownedSquares, gridSize, state);
-            checkVertical(ownedSquares, gridSize, state);
+            state.winner = (
+                checkHorizontal(ownedSquares, gridSize) ||
+                checkDiagonal(ownedSquares, gridSize) ||
+                checkVertical(ownedSquares, gridSize)
+            );
 
             return Object.assign({}, state);
         },
         TOGGLE_TURN: (action) => {
-            state.currentPlayer = action.payload.currentPlayer ? 0 : 1;
+            if (!state.winner) {
+                state.currentPlayer = action.payload.currentPlayer ? 0 : 1;
+            }
             return Object.assign({}, state);
         },
         RESET_ALL: () => {

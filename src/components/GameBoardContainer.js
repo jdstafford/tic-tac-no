@@ -1,19 +1,21 @@
 import { connect } from 'react-redux';
-import { toggleTurn, claimSquare } from '../actions';
+import { toggleTurn, claimSquare, updateGrid } from '../actions';
 
 import GameBoard from './GameBoard';
 
 const mapStateToProps = state => ({
     gridSize: state.gameBoard.gridSize,
-    currentPlayerIndex: state.players.currentPlayer,
-    currentPlayerDetails: state.players.collection[state.players.currentPlayer],
+    grid: state.gameBoard.grid,
+    playerIndex: state.players.currentPlayer,
+    playerDetails: state.players.collection[state.players.currentPlayer],
     winner: state.players.winner
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    claimSquare: (coordinates, currentPlayerIndex, gridSize) => {
-        dispatch(claimSquare(coordinates, currentPlayerIndex, gridSize));
-        dispatch(toggleTurn(currentPlayerIndex));
+    claimSquare: (coordinates, playerIndex, playerDetails, gridSize) => {
+        dispatch(claimSquare(coordinates, playerIndex, gridSize));
+        dispatch(updateGrid(coordinates, playerDetails));
+        dispatch(toggleTurn(playerIndex));
     }
 });
 
