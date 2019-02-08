@@ -1,4 +1,4 @@
-Classic Tic-Tac-Toe.  Loser goes first on subsequent rounds.
+Classic Tic-Tac-Toe.  Features a scoreboard and play-again. Loser goes first on subsequent rounds.
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
