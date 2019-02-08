@@ -1,12 +1,10 @@
 const defaultState = {
     collection: [
         {
-            name: 'One',
-            character: 'N',
+            character: 'X',
             ownedSquares: []
         },
         {
-            name: 'Two',
             character: 'O',
             ownedSquares: []
         }

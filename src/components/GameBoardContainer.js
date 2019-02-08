@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
     winner: state.gameBoard.winner
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
     claimSquare: (coordinates, currentPlayerIndex) => {
         dispatch(claimSquare(coordinates, currentPlayerIndex));
         dispatch(toggleTurn(currentPlayerIndex));
