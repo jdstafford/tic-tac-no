@@ -5,9 +5,21 @@ import GameBoardSquare from './GameBoardSquare';
 import PlayAgainButton from './PlayAgainButton';
 import ScoreBoard from './ScoreBoard';
 
-const GameBoard = ({ grid, scoreBoard, claimSquare, resetAll, playerIndex, playerDetails, winner }) => {
+const GameBoard = ({
+    grid,
+    scoreBoard,
+    claimSquare,
+    resetAll,
+    playerIndex,
+    playerDetails,
+    winner,
+    draw
+}) => {
     const rows = [];
-    const playAgain = winner ? <PlayAgainButton resetAll={() => { resetAll() }} /> : '';
+    const playAgain = (winner || draw) ? <PlayAgainButton resetAll={() => { resetAll() }} /> : '';
+    const winnerMessage = ((winner && !draw) ? (' Wins!') : '\'s Turn');
+    const playerMessage = playerDetails.character + winnerMessage;
+    const drawMessage = 'Draw!';
 
     // construct the grid from state
     grid.forEach((row, rowIndex) => {
@@ -32,7 +44,7 @@ const GameBoard = ({ grid, scoreBoard, claimSquare, resetAll, playerIndex, playe
     return (
         <div className="GameBoard">
             <div className="InfoBar">
-                {playerDetails.character}{(winner ? (' Wins!') : '\'s Turn')}
+                {(draw && !winner) ? drawMessage : playerMessage}
                 {playAgain}
             </div>
             {rows}

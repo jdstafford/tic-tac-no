@@ -9,7 +9,8 @@ const mapStateToProps = state => ({
     scoreBoard: state.players.scoreBoard,
     playerIndex: state.players.currentPlayer,
     playerDetails: state.players.collection[state.players.currentPlayer],
-    winner: state.players.winner
+    winner: state.players.winner,
+    draw: state.gameBoard.draw
 });
 
 const mapDispatchToProps = (dispatch) => ({

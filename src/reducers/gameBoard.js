@@ -1,12 +1,16 @@
 const defaultState = {
     gridSize: 3,
-    initialized: false
+    initialized: false,
+    ownedSquares: 0,
+    draw: false
 };
 
 const gameBoard = (state = defaultState, action) => {
     const actions = {
         RESET_ALL: () => {
             state.grid = generateGrid(state.gridSize);
+            state.ownedSquares = 0;
+            state.draw = false;
             return Object.assign({}, state);
         },
         UPDATE_GRID: (action) => {
@@ -14,6 +18,9 @@ const gameBoard = (state = defaultState, action) => {
             const { rowIndex, colIndex } = coordinates;
 
             state.grid[rowIndex][colIndex].owner = player;
+
+            state.ownedSquares++;
+            state.draw = (state.ownedSquares === (state.gridSize * state.gridSize));
             return Object.assign({}, state);
         }
     };
